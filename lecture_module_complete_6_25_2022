@@ -1,0 +1,68 @@
+#my_import.py
+#3 class object and 1 global func, 1 global var
+class clas_a:
+      memb_clas_a=10      
+      def __init__(self):
+            print("__init__ clas_a")
+      def fMem_clas_a(self):
+            print("fMem_clas_a")      
+class clas_b(clas_a):
+      memb_clas_b=20
+      def __init__(self=None):
+            print("__init__ clas_b")
+      def fMem_clas_b(self=None):
+            print("((fMem_clas_b))")
+            return "b returns"
+class clas_c:
+      memb_clas_c=30
+      def __init__(self):
+            print("__init__ clas_c")
+      def fMem_clas_c(self):
+            print("fMem_clas_c")
+def fGlob_func(a,b):
+      print("fGlobfunc")
+      return a+b
+
+memb_glob_var = 123
+
+##########################
+
+#test_my_import_2.py test a solo import keyword
+
+import my_import #my_import will be declared like class objects and all members class, globa function, 
+                 #global variables is a member of my_import
+
+print(f"my_import.clas_a.memb_clas_a {my_import.clas_a.memb_clas_a}")
+
+print(f"my_import.clas_b.fMem_clas_b {my_import.clas_b.fMem_clas_b()}")
+
+print(f"my_import.fGlob_func(1,2) {my_import.fGlob_func(1,2)}")
+
+obj_c = my_import.clas_c()
+
+print(f"obj_c what kind of: { type(obj_c) } ")
+
+############################
+#file test_my_import.py  a collection of test of from import keyword
+
+
+#from my_import  #will not work u need to combine import keyword
+
+#from my_import import my_import as imp #u cannot name the same name in from to import keyword
+
+#from my_import.clas_a import mem_clas_a as mem_obj_a_var #error is not a package, pero sa module tkinter pede
+
+#from my_import import clas_a.memb_clas_a as mem_obj_a #invalid syntax
+
+from my_import import clas_a as mem_obj_a 
+
+from my_import import clas_b  #the declare in import shall only be called, u use import * all 
+#members including global function, global variable, all kind of class object can be called
+
+#print( "my_import.clas_a.memb_clas_a " + str( imp.clas_a.memb_clas_a) )
+print(f" mem_obj_a {mem_obj_a.memb_clas_a} ")
+
+print(f"clas_b {clas_b.memb_clas_b} ")
+
+
+
